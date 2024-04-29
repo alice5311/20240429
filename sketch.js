@@ -5,17 +5,19 @@ var capture_height =640
 function setup() {
   createCanvas(windowWidth,windowHeight);
   capture = createCapture(VIDEO) //啟動攝影機
-  capture.size(capture_width,480);//設定顯示畫面大小
+  capture.size(capture_width,capture_height);//設定顯示畫面大小
   captureGraphics = createGraphics(capture_width,480)
   captureGraphics.translate(capture_width,0)
   captureGraphics.scale(-1,1)
   capture.hide()
+  //旋鈕
 
 }
 
 function draw() {
   background(220);
   noStroke()
+  span = 5+map(mouseX,0,width,0,20)
   var span = 10
   push()
   translate(width/2-capture_width,height/2-capture_height)
@@ -24,7 +26,8 @@ function draw() {
     for(var y=0;y<captureGraphics.height;y=y+span){
       var pixel = captureGraphics.get(x,y)
       fill(pixel)
-      rect(x,y,20,span)
+      //rect(x,y,span)
+      ellipse(x,y,span)
     }
   }
   pop()
