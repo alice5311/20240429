@@ -11,6 +11,11 @@ function setup() {
   captureGraphics.scale(-1,1)
   capture.hide()
   //旋鈕
+  var radioElement = createRadio();
+  radioElement.position(width/2-300,20)
+  radioElement.option("方塊")
+  radioElement.option("圓圈")
+  radioElement.style("color","#fff")
 
 }
 
@@ -26,6 +31,13 @@ function draw() {
     for(var y=0;y<captureGraphics.height;y=y+span){
       var pixel = captureGraphics.get(x,y)
       fill(pixel)
+      if(radioElement.value()=="方塊"){
+        rect(x,y,span)
+      }
+      if(radioElement.value()=="圓圈")
+      {
+        ellipse(x,y,span)
+      }
       //rect(x,y,span)
       ellipse(x,y,span)
     }
@@ -33,3 +45,4 @@ function draw() {
   pop()
   
 }
+
